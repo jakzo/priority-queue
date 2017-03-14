@@ -1,6 +1,20 @@
 import test from 'ava';
 import PriorityQueue from '../lib/priority-queue.js';
 
+test('example', t => {
+  function compare(a, b) {
+    if (a.priority < b.priority) return true;
+    else return false;
+  }
+  var pq = new PriorityQueue(compare);
+  pq.push({ foo: 'bar', priority: 4 });
+  pq.push({ priority: 3, something: 'text' });
+  pq.push({ priority: 9 });
+  t.deepEqual(pq.pop(), { priority: 3, something: 'text' });
+  t.deepEqual(pq.pop(), { foo: 'bar', priority: 4 });
+  t.deepEqual(pq.pop(), { priority: 9 });
+});
+
 test('sorted', t => {
   const pq = new PriorityQueue(),
         items = [ 9, 1, 6, 4, 7, 7, 9, 4, 2, -14, 3, 32, 65, 8 ],
