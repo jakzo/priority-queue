@@ -1,5 +1,7 @@
 # priority-queue
-JavaScript priority queue implementation.
+[![Build Status](https://travis-ci.org/jakzo/priority-queue.svg?branch=master)](https://travis-ci.org/jakzo/priority-queue)
+
+*JavaScript priority queue implementation.*
 
 ## Usage
 
