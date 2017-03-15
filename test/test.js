@@ -10,9 +10,13 @@ test('example', t => {
   pq.push({ foo: 'bar', priority: 4 });
   pq.push({ priority: 3, something: 'text' });
   pq.push({ priority: 9 });
+  t.is(pq.length, 3);
   t.deepEqual(pq.pop(), { priority: 3, something: 'text' });
+  t.deepEqual(pq.peek(), { foo: 'bar', priority: 4 });
   t.deepEqual(pq.pop(), { foo: 'bar', priority: 4 });
-  t.deepEqual(pq.pop(), { priority: 9 });
+  pq.clear();
+  t.is(pq.length, 0);
+  t.is(pq.pop(), undefined);
 });
 
 test('sorted', t => {

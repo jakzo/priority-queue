@@ -22,9 +22,11 @@ var pq = new PriorityQueue(compare);
 pq.push({ foo: 'bar', priority: 4 });
 pq.push({ priority: 3, something: 'text' });
 pq.push({ priority: 9 });
-console.log(pq.pop()); // { priority: 3, something: 'text' }
-console.log(pq.pop()); // { foo: 'bar', priority: 4 }
-console.log(pq.pop()); // { priority: 9 }
+console.log(pq.length); // 3
+console.log(pq.pop());  // { priority: 3, something: 'text' }
+console.log(pq.peek()); // { foo: 'bar', priority: 4 }
+console.log(pq.pop());  // { foo: 'bar', priority: 4 }
+console.log(pq.pop());  // { priority: 9 }
 ```
 
 ## API
@@ -45,6 +47,24 @@ Pushes an element onto the queue.
 Removes and returns the item with the highest priority.
 
 **Returns**: `*`, The item with the highest priority in the queue.
+
+#### `peek()`
+
+Returns the item with the highest priority without removing it.
+
+**Returns**: `*`, The item with the highest priority in the queue.
+
+#### `clear()`
+
+Removes all elements from the queue.
+
+**Returns**: `void`
+
+#### `length`
+
+The number of elements in the queue.
+
+**Type**: `number`
 
 #### `PriorityQueue.defaultCompare`
 
