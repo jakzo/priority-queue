@@ -75,7 +75,7 @@ export default class PriorityQueue extends Array {
 
 /**
  * The comparison function which is used if no comparison function is passed
- * into the constructor. By default it just evaluates `a < b`.
+ * into the constructor. By default it evaluates `a < b`.
  * @type {Function}
  * @param {*} a First element to compare.
  * @param {*} b Second element to compare.

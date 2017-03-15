@@ -26,3 +26,27 @@ console.log(pq.pop()); // { priority: 3, something: 'text' }
 console.log(pq.pop()); // { foo: 'bar', priority: 4 }
 console.log(pq.pop()); // { priority: 9 }
 ```
+
+## API
+
+
+### Class: `PriorityQueue`
+
+#### `PriorityQueue.push(item)`
+
+Pushes an element onto the queue.
+
+**item**: `*`, Element to be pushed onto the queue.
+
+**Returns**: `number`, The number of items on the queue after the push.
+
+#### `PriorityQueue.pop()`
+
+Removes and returns the item with the highest priority.
+
+**Returns**: `*`, The item with the highest priority in the queue.
+
+#### `PriorityQueue.defaultCompare(a, b)`
+
+The comparison function which is used if no comparison function is passed
+into the constructor. By default it evaluates `a < b`.
