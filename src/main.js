@@ -17,7 +17,10 @@ export default class PriorityQueue extends Array {
    * @return {number} The number of items on the queue after the push.
    */
   push(item) {
+    // Add the item at the bottom of the heap
     const length = Array.prototype.push.call(this, item);
+    // Bubble it up to its correct position (until it reaches a node with a
+    // greater priority or it becomes the root node)
     let i = length - 1,
         parent = i - 1 >> 1;
     while (i > 0 && this.compare(item, this[parent])) {
@@ -34,32 +37,44 @@ export default class PriorityQueue extends Array {
    * @return {*} The item with the highest priority in the queue.
    */
   pop() {
-    const popped = this[0],
-          item = Array.prototype.pop.call(this);
+    // Get the item with the highest priority (it will be at index 0)
+    const popped = this[0];
+    // Rebalance the tree by putting the item with the lowest priority at the
+    // top then bubbling it down to its correct position
+    const item = Array.prototype.pop.call(this);
     let i = 0,
         ia = 1,
         ib = 2;
-    while (ia < this.length) {
-      if (ib == this.length || this.compare(this[ia], this[ib])) {
-        if (this.compare(item, this[ia])) break;
+    while (ib < this.length) {
+      // Swap the item with the child which has a higher priority
+      if (this.compare(this[ia], this[ib])) {
         this[i] = this[ia];
         i = ia;
       } else {
-        if (this.compare(item, this[ib])) break;
         this[i] = this[ib];
         i = ib;
       }
       ia = i * 2 + 1;
       ib = i * 2 + 2;
     }
-    if (this.length != 0) this[i] = item;
+    // If the final pair of children only contains one item, don't compare both
+    // children, but we do need to compare it with the item we are bubbling
+    // because it used to be the other item in this pair and may have been the
+    // item with the higher priority
+    if (this.length != 0) {
+      if (ib == this.length && !this.compare(item, this[ia])) {
+        this[i] = this[ia];
+        i = ia;
+      }
+      this[i] = item;
+    }
     return popped;
   }
 }
 
 /**
  * The comparison function which is used if no comparison function is passed
- * into the constructor. By default, it just evaluates `a < b`.
+ * into the constructor. By default it just evaluates `a < b`.
  * @type {Function}
  */
 PriorityQueue.defaultCompare = (a, b) => a < b;
