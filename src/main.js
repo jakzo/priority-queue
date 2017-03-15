@@ -8,6 +8,7 @@ export default class PriorityQueue extends Array {
    *    item has a greater priority than the second, otherwise `false`.
    */
   constructor(compare = PriorityQueue.defaultCompare) {
+    super();
     this.compare = compare;
   }
 
@@ -54,15 +55,15 @@ export default class PriorityQueue extends Array {
         this[i] = this[ib];
         i = ib;
       }
-      ia = i * 2 + 1;
-      ib = i * 2 + 2;
+      ia = (i * 2) + 1;
+      ib = (i * 2) + 2;
     }
     // If the final pair of children only contains one item, don't compare both
     // children, but we do need to compare it with the item we are bubbling
     // because it used to be the other item in this pair and may have been the
     // item with the higher priority
-    if (this.length != 0) {
-      if (ib == this.length && !this.compare(item, this[ia])) {
+    if (this.length !== 0) {
+      if (ib === this.length && !this.compare(item, this[ia])) {
         this[i] = this[ia];
         i = ia;
       }
@@ -76,5 +77,8 @@ export default class PriorityQueue extends Array {
  * The comparison function which is used if no comparison function is passed
  * into the constructor. By default it just evaluates `a < b`.
  * @type {Function}
+ * @param {*} a First element to compare.
+ * @param {*} b Second element to compare.
+ * @return {boolean} `true` if `a < b`.
  */
 PriorityQueue.defaultCompare = (a, b) => a < b;

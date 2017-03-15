@@ -6,8 +6,10 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -w -c",
-    "test": "nyc ava",
-    "coverage": "nyc report --reporter=html"
+    "test": "xo && nyc ava",
+    "coverage": "nyc report --reporter=html",
+    "lint": "xo",
+    "prepublish": "xo && rollup -c && nyc ava"
   },
   "author": "jakzo <jakzo@axension.io>",
   "repository": "jakzo/priority-queue",
@@ -17,6 +19,54 @@
     "coveralls": "^2.12.0",
     "nyc": "^10.1.2",
     "rollup": "^0.41.5",
-    "rollup-plugin-buble": "^0.15.0"
+    "rollup-plugin-buble": "^0.15.0",
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "envs": [],
+    "ignores": [ "lib/*" ],
+    "rules": {
+      "valid-jsdoc": 2,
+      "block-scoped-var": 2,
+      "class-methods-use-this": 2,
+      "curly": [ 2, "multi-line", "consistent" ],
+      "dot-location": [ 2, "property" ],
+      "dot-notation": 2,
+      "eqeqeq": [ 2, "smart" ],
+      "no-else-return": 2,
+      "no-extra-label": 2,
+      "no-floating-decimal": 2,
+      "no-global-assign": 2,
+      "no-invalid-this": 2,
+      "no-lone-blocks": 2,
+      "no-multi-str": 2,
+      "no-param-reassign": 2,
+      "no-return-assign": 2,
+      "no-return-await": 2,
+      "no-self-compare": 2,
+      "no-sequences": 2,
+      "no-unmodified-loop-condition": 2,
+      "no-unused-expressions": 2,
+      "no-useless-call": 2,
+      "no-useless-concat": 2,
+      "no-useless-escape": 2,
+      "no-useless-return": 2,
+      "no-void": 2,
+      "no-warning-comments": 1,
+      "require-await": 2,
+      "wrap-iife": [ 2, "inside" ],
+      "yoda": 2,
+
+      "array-bracket-spacing": 0,
+      "indent": [ 2, 2, {
+        "SwitchCase": 1,
+        "VariableDeclarator": { "var": 2, "let": 2, "const": 3 },
+        "MemberExpression": 1
+      } ],
+      "object-curly-spacing": [ 2, "always" ],
+      "one-var": 0
+    },
+    "space": 2,
+    "semicolon": true
   }
 }

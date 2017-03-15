@@ -1,10 +1,10 @@
 import test from 'ava';
-import PriorityQueue from '../lib/priority-queue.js';
+import PriorityQueue from '../lib/priority-queue';
 
 test('example', t => {
   function compare(a, b) {
     if (a.priority < b.priority) return true;
-    else return false;
+    return false;
   }
   var pq = new PriorityQueue(compare);
   pq.push({ foo: 'bar', priority: 4 });

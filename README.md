@@ -1,5 +1,8 @@
 # priority-queue
 [![Build Status](https://travis-ci.org/jakzo/priority-queue.svg?branch=master)](https://travis-ci.org/jakzo/priority-queue)
+[![Build status](https://ci.appveyor.com/api/projects/status/ov5yyh5r827nwip1?svg=true)](https://ci.appveyor.com/project/jakzo/priority-queue)
+[![Coverage Status](https://coveralls.io/repos/github/jakzo/priority-queue/badge.svg?branch=master)](https://coveralls.io/github/jakzo/priority-queue?branch=master)
+[![Dependency Status](https://dependencyci.com/github/jakzo/priority-queue/badge)](https://dependencyci.com/github/jakzo/priority-queue)
 
 *JavaScript priority queue implementation.*
 
@@ -13,7 +16,7 @@
 
 function compare(a, b) {
   if (a.priority < b.priority) return true;
-  else return false;
+  return false;
 }
 var pq = new PriorityQueue(compare);
 pq.push({ foo: 'bar', priority: 4 });
